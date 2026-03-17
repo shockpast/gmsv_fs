@@ -1,0 +1,13 @@
+[package]
+name = "gmsv_fs"
+version = "0.1.0"
+edition = "2024"
+
+[lib]
+crate-type = ["cdylib"]
+
+[dependencies]
+cap-std = "4.0.2"
+
+[dependencies.gmodx]
+git = "https://github.com/Srlion/gmodx-rs"
