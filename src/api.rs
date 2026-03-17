@@ -1,7 +1,7 @@
 use std::{io::{Read, Write}, path::{Path, PathBuf}, time::SystemTime};
 
 use gmodx::lua;
-use cap_std::{ambient_authority, fs::{Dir, MetadataExt, OpenOptions}};
+use cap_std::{ambient_authority, fs::{Dir, OpenOptions}};
 
 //
 fn io_err(e: std::io::Error) -> lua::Error {
@@ -300,7 +300,7 @@ fn fs_metadata(state: &lua::State, path: lua::String) -> lua::Result<lua::Table>
     let table = state.create_table();
     table.raw_set(state, "is_dir", meta.is_dir());
     table.raw_set(state, "is_file", meta.is_file());
-    table.raw_set(state, "size", meta.file_size());
+    table.raw_set(state, "size", meta.len());
     table.raw_set(state, "creation_time", created);
     table.raw_set(state, "modified", modified);
     table.raw_set(state, "accessed", accessed);
